@@ -1,0 +1,40 @@
+.container {
+	max-width: 1626px !important;
+	padding-left: 30px !important;
+	padding-right: 30px !important;
+	margin: 0 auto !important;
+}
+
+.site-container {
+	overflow: hidden;
+}
+
+.flex {
+	display: flex;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.btn__reset {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 0;
+}
+
+.section__title {
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 80px;
+	color: var(--dark-color);
+}
+
+.section__title--center {
+	text-align: center;
+	max-width: none;
+}
