@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MiTravel</title>
+	<link rel="stylesheet" href="libs/swiper.min.css"/>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -160,17 +161,40 @@
 			</section>
 
 			<section class="featured__videos">
-				<div class="container">
+				<div class="container featured__videos-container">
 					<h2 class="featured__videos-title section-title section__title--center">
 						Featured Videos
 					</h2>
-					<p class="featured__videos-descr section__title--center">
-						The state of Utah in the United States is home to lots of beautiful National Parks, & Bryce Canyon National Park ranks as three of the most magnificent & awe inspiring.
-					</p>
+					<div class="featured__descr-slider">
+						<p class="featured__videos-descr">
+							The state of Utah in the United States is home to lots of beautiful National Parks, & Bryce Canyon National Park ranks as three of the most magnificent & awe inspiring.
+						</p>
+					</div>
+				</div>
+				<div class="slider-container mySwiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide slide-1">
+							<button class="btn__reset slide-play"></button>
+							<h3 class="slide-title">A Guide To Rocky Mountain Vacations</h3>
+						</div>
+						<div class="swiper-slide slide-2">
+							<button class="btn__reset slide-play"></button>
+							<h3 class="slide-title">A Guide To Rocky Mountain Vacations</h3>
+						</div>
+						<div class="swiper-slide slide-3">
+							<button class="btn__reset slide-play"></button>
+							<h3 class="slide-title">A Guide To Rocky Mountain Vacations</h3>
+						</div>
+						<div class="swiper-slide slide-4">
+							<button class="btn__reset slide-play"></button>
+							<h3 class="slide-title">A Guide To Rocky Mountain Vacations</h3>
+						</div>
+					</div>
 				</div>
 			</section>
 		</main>
 	</div>
-
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>
