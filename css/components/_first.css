@@ -16,6 +16,10 @@
 }
 
 .first__link {
+	margin-bottom: 42px;
+}
+
+.link_of_featured {
 	background-color: rgba(28, 46, 61, 0.4);
 	font-weight: 800;
 	font-size: 11px;
@@ -24,7 +28,6 @@
 	border-radius: 100px;
 	text-transform: uppercase;
 	display: inline-block;
-	margin-bottom: 42px;
 }
 
 .first__title {
@@ -55,6 +58,12 @@
 	color: var(--white-color);
 	position: relative;
 	z-index: 5;
+	transition: background-color 0.3s;
+}
+
+.first__btn:hover {
+	background-color: var(--accent-hover-color);
+	transition: background-color 0.3s;
 }
 
 .fisrt__bottom {
@@ -84,6 +93,7 @@
 	color: var(--dark-color);
 	padding-left: 55px;
 	padding-right: 100px;
+	transition: border 0.3s;
 }
 
 .search-form__button {

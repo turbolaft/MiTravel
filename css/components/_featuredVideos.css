@@ -119,6 +119,13 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	transform: translateY(-200px);
+	transition: transform 0.3s;
+}
+
+.swiper-slide-active .slide-play {
+	transform: translateY(0);
+	transition: transform 0.3s;
 }
 
 .swiper-slide video {

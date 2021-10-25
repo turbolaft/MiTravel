@@ -38,3 +38,10 @@ input[type="search"]::-webkit-search-results-decoration {
 	text-align: center;
 	max-width: none;
 }
+
+.input-reset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	border: none;
+}
