@@ -133,6 +133,49 @@
 	letter-spacing: 2px;
 }
 
+.first__slider-btn {
+	position: absolute;
+	left: 50px;
+	bottom: 53px;
+	width: 14px;
+	height: 14px;
+	z-index: 50;
+}
+
+.btn-left {
+	background-image: url(../../img/SVG/slider__arrow-left.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.btn-right {
+	left: auto;
+	right: 50px;
+	background-image: url(../../img/SVG/slider__arrow-right.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.main-slider__media {
+	max-height: 275px;
+}
+
+.main-slider__play {
+	position: absolute;
+	left: 50%;
+	top: 35%;
+	transform: translate(-50%, -50%);
+	width: 32px;
+	height: 41px;
+	z-index: 51;
+	background-image: url(../../img/SVG/play__onSlider--firstSection.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 @media (max-height: 1079px) {
 	.first__container {
 		padding: 200px 30px;
