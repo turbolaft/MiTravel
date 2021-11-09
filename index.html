@@ -5,7 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MiTravel</title>
-	<link rel="stylesheet" href="libs/swiper.min.css"/>
+	<!-- <link rel="stylesheet" href="libs/swiper.min.css"/> -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -65,6 +66,7 @@
 								<div class="swiper-wrapper">
 									<button class="first__slider-btn btn__reset btn-left"></button>
 									<button class="first__slider-btn btn__reset btn-right"></button>
+
 									<div class="swiper-slide">
 										<div class="main-slider__media">
 											<img src="img/first-slider/slide-mountains.jpg" alt="Mountains">
@@ -73,6 +75,7 @@
 											wonderful moutain
 										</div>
 									</div>
+
 									<div class="swiper-slide">
 										<div class="main-slider__media">
 											<button class="main-slider__play btn__reset"></button>
@@ -82,6 +85,7 @@
 											Mountain in Ukraine
 										</div>
 									</div>
+
 									<div class="swiper-slide">
 										<div class="main-slider__media">
 											<img src="img/first-slider/slide-mountains.jpg" alt="Mountains">
@@ -90,6 +94,7 @@
 											Carpatu
 										</div>
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -136,7 +141,18 @@
 						<a href="#" class="blog__article-link">Read Article</a>
 					</article>
 				</div>
+				<div class="featured__burger--show">
+					<h2 class="featured__burger--title">Featured Stories</h2>
+					<button class="featured__burger btn__reset">
+						<span class="featured__burger--line"></span>
+						<span class="featured__burger--line"></span>
+						<span class="featured__burger--line"></span>
+					</button>
+				</div>
 				<div class="featured__stories">
+					<button class="close__featured--stories btn__reset">
+						<img src="img/icons/closeButton--featured.png" alt="">
+					</button>
 					<h2 class="featured__title">Featured Stories</h2>
 					<ul class="featured__list feature-list">
 						<li class="feature__list-item">
@@ -419,7 +435,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>

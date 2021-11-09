@@ -45,3 +45,17 @@ input[type="search"]::-webkit-search-results-decoration {
 	border: 0;
 	border: none;
 }
+
+.hide {
+	display: none;
+}
+
+.d-show__right {
+	right: 0 !important;
+	transition: right 0.6s;
+}
+
+.d-hide__right {
+	right: -150vw !important;
+	transition: right 0.6s;
+}
