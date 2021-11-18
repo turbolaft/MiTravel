@@ -134,12 +134,12 @@
 }
 
 .first__slider-btn {
-	position: absolute;
-	left: 50px;
-	bottom: 53px;
-	width: 14px;
-	height: 14px;
-	z-index: 50;
+  position: absolute;
+  left: 47px;
+  bottom: 49px;
+  width: 28px;
+  height: 17px;
+  z-index: 50;
 }
 
 .btn-left {

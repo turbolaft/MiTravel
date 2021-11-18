@@ -196,3 +196,7 @@
 	height: 70px;
 }
 
+.blog__article-link {
+	color: var(--white-color);
+}
+

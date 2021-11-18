@@ -99,3 +99,180 @@ function hideMyFeaturedMenu(section, menu) {
 closeFeatured.addEventListener('click', () => {
 	hideMyFeaturedMenu(featuredStories, featuredBurger);
 });
+
+// modal
+
+const openModalTrigger = document.querySelectorAll('.btn__modal'),
+			modalOverlay = document.querySelector('.modal-overlay'),
+			modal = document.querySelectorAll('.modal');
+
+openModalTrigger.forEach(el => {
+	el.addEventListener('click', e => {
+		let path = e.currentTarget.getAttribute('data-path');
+
+		modal.forEach(el => {
+			el.classList.remove('modal--visible');
+		});
+
+		document.body.style.overflow = 'hidden';
+
+		document.querySelector(`[data-target="${path}"]`).classList.add('modal--visible');
+		modalOverlay.classList.add('modal-overlay--visible');
+	});
+});
+
+modalOverlay.addEventListener('click', e => {
+
+	if (e.target === modalOverlay) {
+		modal.forEach(el => {
+			el.classList.remove('modal--visible');
+		});
+
+		modalOverlay.classList.remove('modal-overlay--visible');
+	}
+
+	document.body.style.overflow = '';
+});
+
+document.addEventListener('keydown', e => {
+	if (e.code === "Escape" || modal.classList.contains("modal--visible")) {
+		modal.forEach(el => {
+			el.classList.remove('modal--visible');
+		});
+
+		modalOverlay.classList.remove('modal-overlay--visible');
+	}
+
+	document.body.style.overflow = '';
+});
+
+// Header scrollTo
+
+let anchors = document.querySelectorAll('nav a[href*="#"]');
+
+for (anchor of anchors) {
+	if (anchor || menu.classList.contains('show')) {
+		anchor.addEventListener('click', function(e) {
+			e.preventDefault();
+			closeMyMenu(menu);
+			anchorsId = e.target.getAttribute('href');
+			document.querySelector(anchorsId).scrollIntoView({
+				behavior: "smooth",
+				block: 'start'
+			});
+		});
+	}
+}
+
+// scroll-up
+
+const offset = 100;
+const scrollUp = document.querySelector('.scroll-up');
+const scrollUpSgvPath = document.querySelector('.scroll-up__svg--path');
+const pathLengs = scrollUpSgvPath.getTotalLength();
+
+scrollUpSgvPath.style.strokeDasharray = `${pathLengs} ${pathLengs}`;
+scrollUpSgvPath.style.transition = 'stroke-dashoffset 20ms';
+
+const getTop = () => window.pageYOffset || document.documentElement.scrollTop;
+
+// update dashOffset
+const updateDashOffset = () => {
+	const height = document.documentElement.scrollHeight - window.innerHeight;
+	const dashOffset = pathLengs - (getTop() * pathLengs / height);
+
+	scrollUpSgvPath.style.strokeDashoffset = dashOffset;
+};
+
+
+// onScroll
+window.addEventListener('scroll', () => {
+	updateDashOffset();
+
+	if (getTop() > offset) {
+		scrollUp.classList.add('scroll-up--active');
+	} else {
+		scrollUp.classList.remove('scroll-up--active');
+	}
+});
+
+
+// click
+scrollUp.addEventListener('click', () => {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+});
+
+function showDeleteBooks(book, i) {
+	book[i].classList.add('show');
+	book[i].classList.remove('hide');
+}
+
+function hideDeleteBooks(book, i) {
+	book[i].classList.add('hide');
+	book[i].classList.remove('show');
+}
+
+// Books script added
+window.addEventListener('DOMContentLoaded', () => {
+	const movieDB = {
+		movies: [
+			"Логан",
+			"Лига справедливости",
+			"Ла-ла ленд",
+			"Одержимость",
+			"Скотт Пилигримм против..."
+		]
+	};
+
+	const readBookList = document.querySelector('.read__book--list');
+
+	readBookList.innerHTML = "";
+
+	movieDB.movies.sort();
+
+	movieDB.movies.forEach((film, i) => {
+		readBookList.innerHTML += `
+				<li class="read__book--item">${i + 1} ${film}
+					<div class="read__book--delete hide"></div>
+				</li>
+		`;
+	});
+
+	// modal #1
+
+	const deleteMyBook = document.querySelectorAll('.read__book--delete'),
+			bookItem = document.querySelectorAll('.read__book--item');
+
+	bookItem.forEach(el => {
+		el.addEventListener('mousemove', e => {
+			let target = e.target;
+
+			if (target && target.classList.contains('read__book--item')) {
+				bookItem.forEach((item, i) => {
+					if (target == item) {
+						showDeleteBooks(deleteMyBook, i);
+						console.log(i);
+					}
+				});
+			}
+		});
+
+	el.addEventListener('mouseout', (e) => {
+		let target = e.target;
+
+		bookItem.forEach((item, i) => {
+			if (target != item) {
+				hideDeleteBooks(deleteMyBook, i);
+			}
+		});
+	});
+});
+});
+
+
+
+
+
