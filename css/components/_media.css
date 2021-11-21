@@ -264,6 +264,19 @@
 	.btn-right {
 		right: 20px;
 	}
+
+	.modal--1 {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+	.modal__books {
+		flex-direction: column;
+	}
+
+	.add__book--title {
+		margin-top: 50px !important;
+	}
 }
 
 @media (max-width: 576px) {

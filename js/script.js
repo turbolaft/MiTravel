@@ -129,9 +129,9 @@ modalOverlay.addEventListener('click', e => {
 		});
 
 		modalOverlay.classList.remove('modal-overlay--visible');
-	}
 
-	document.body.style.overflow = '';
+		document.body.style.overflow = '';
+	}
 });
 
 document.addEventListener('keydown', e => {
@@ -217,6 +217,34 @@ function hideDeleteBooks(book, i) {
 
 // Books script added
 window.addEventListener('DOMContentLoaded', () => {
+	const readBookList = document.querySelector('.read__book--list'),
+				addForm = document.querySelector('.add__book--form'),
+				addInput = addForm.querySelector('.add__book--field');
+
+	addForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		let newFilm = addInput.value;
+		const bookLimit = document.querySelector('.add__book--limit');
+
+		if (newFilm && movieDB.movies.length < 8) {
+
+			if (newFilm.length > 21) {
+				newFilm = `${newFilm.substring(0, 22)}...`;
+			}
+			movieDB.movies.push(newFilm);
+
+			sortArr(movieDB.movies);
+			addNewBooks(readBookList, movieDB.movies);
+		} else if (movieDB.movies.length >= 8) {
+
+			bookLimit.classList.add('d-show__right');
+			bookLimit.classList.remove('d-hide__right');
+		}
+
+		e.target.reset();
+		addHoverItem();
+	});
+
 	const movieDB = {
 		movies: [
 			"Логан",
@@ -227,49 +255,72 @@ window.addEventListener('DOMContentLoaded', () => {
 		]
 	};
 
-	const readBookList = document.querySelector('.read__book--list');
+	const sortArr = (arr) => {
+		arr.sort();
+	};
 
-	readBookList.innerHTML = "";
+	function addNewBooks(parents, books) {
+		parents.innerHTML = "";
 
-	movieDB.movies.sort();
+		books.forEach((film, i) => {
+			parents.innerHTML += `
+					<li class="read__book--item">${i + 1} ${film}
+						<div class="read__book--delete hide"></div>
+					</li>
+			`;
+		});
 
-	movieDB.movies.forEach((film, i) => {
-		readBookList.innerHTML += `
-				<li class="read__book--item">${i + 1} ${film}
-					<div class="read__book--delete hide"></div>
-				</li>
-		`;
-	});
+		document.querySelectorAll('.read__book--delete').forEach((btn, i) => {
+			btn.addEventListener('click', () => {
+				const bookLimit = document.querySelector('.add__book--limit');
+				btn.parentElement.remove();
+				books.splice(i, 1);
+
+				addNewBooks(parents, books);
+				addHoverItem();
+
+				bookLimit.classList.remove('d-show__right');
+				bookLimit.classList.add('d-hide__right');
+			});
+		});
+	}
+
+	addNewBooks(readBookList, movieDB.movies);
+	sortArr(movieDB.movies);
 
 	// modal #1
 
-	const deleteMyBook = document.querySelectorAll('.read__book--delete'),
+	function addHoverItem() {
+		const deleteMyBook = document.querySelectorAll('.read__book--delete'),
 			bookItem = document.querySelectorAll('.read__book--item');
 
-	bookItem.forEach(el => {
-		el.addEventListener('mousemove', e => {
-			let target = e.target;
+		bookItem.forEach(el => {
+			el.addEventListener('mousemove', e => {
+				let target = e.target;
 
-			if (target && target.classList.contains('read__book--item')) {
+				if (target && target.classList.contains('read__book--item')) {
+					bookItem.forEach((item, i) => {
+						if (target == item) {
+							showDeleteBooks(deleteMyBook, i);
+							console.log(i);
+						}
+					});
+				}
+			});
+
+			el.addEventListener('mouseout', (e) => {
+				let target = e.target;
+
 				bookItem.forEach((item, i) => {
-					if (target == item) {
-						showDeleteBooks(deleteMyBook, i);
-						console.log(i);
+					if (target != item) {
+						hideDeleteBooks(deleteMyBook, i);
 					}
 				});
-			}
+			});
 		});
+	}
 
-	el.addEventListener('mouseout', (e) => {
-		let target = e.target;
-
-		bookItem.forEach((item, i) => {
-			if (target != item) {
-				hideDeleteBooks(deleteMyBook, i);
-			}
-		});
-	});
-});
+	addHoverItem();
 });
 
 
