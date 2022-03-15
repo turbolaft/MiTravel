@@ -12,9 +12,14 @@
 <body>
 
 	<div class="site-container">
+		<div class="modal-overlay--form">
+			<div class="modal__form">
+
+			</div>
+		</div>
 		<div class="modals">
 			<div class="modal-overlay">
-				<div class="modal modal--1" data-target="one">
+				<div class="modal modal--1 timeoutModal" data-target="1">
 					<div class="modal__books">
 
 						<div class="read__books">
@@ -50,8 +55,11 @@
 
 					</div>
 				</div>
-				<div class="modal modal--2" data-target="two">
+				<div class="modal modal--2 timeoutModal" data-target="2">
 					Окно №2
+				</div>
+				<div class="modal modal--3" data-target="three">
+
 				</div>
 			</div>
 		</div>
@@ -116,7 +124,7 @@
 					<p class="first__descr">
 						There are not many cities that have experienced such social and political extremes in recent history as Amsterdam. In the 20th century alone, Amsterdam faced the atrocities of war for the first time in 400 years, became the radical center of 1960s social movements and witnessed a complete
 					</p>
-					<button class="first__btn btn__reset btn__modal" data-path="one">Buy the Book</button>
+					<button class="first__btn btn__reset btn__modal" data-path="1">Buy the Book</button>
 					<div class="fisrt__bottom">
 						<form action="/" class="fisrt__form search-form">
 							<input type="search" class="search-form__field" placeholder="Search stories">
@@ -199,7 +207,7 @@
 						<a href="#" class="blog__article-category">Feartured</a>
 						<h3 class="blog__article-title">How To Fly A Private Jet On Your Next Trip</h3>
 						<p class="blog__article-descr">The state of Utah in the United States is home to lots of beautiful National Parks, & Bryce Canyon National Park ranks as three of the most magnificent & awe inspiring.</p>
-						<button class="blog__article-link btn__modal" data-path="two">Read Article</button>
+						<button class="blog__article-link btn__modal" data-path="2">Read Article</button>
 					</article>
 				</div>
 				<div class="featured__burger--show">
@@ -312,10 +320,10 @@
 							<h2 class="news-letter__title section__title">Sign Up Our Newsletter</h2>
 							<p class="news-letter__descr">The state of Utah in the United States is home to lots of beautiful National Parks, & Bryce Canyon National Park ranks as three of the most magnificent.</p>
 						</div>
-						<form action="" class="news-letter__form">
-							<input type="text" class="input-reset news-letter__styleOfInput" name="name" placeholder="Name">
-							<input type="email" class="input-reset news-letter__styleOfInput" name="email" placeholder="Email">
-							<input type="tel" class="input-reset news-letter__styleOfInput" name="tel" placeholder="Phone Number">
+						<form action="" id="registration-form" class="news-letter__form">
+							<input type="text" class="input-reset news-letter__styleOfInput" name="name" placeholder="Name" required>
+							<input type="email" class="input-reset news-letter__styleOfInput" name="email" placeholder="Email" required>
+							<input type="tel" class="input-reset news-letter__styleOfInput" name="tel" placeholder="Phone Number" required>
 							<button class="btn btn__reset subscribe-form__btn">Sign Up Now</button>
 						</form>
 					</div>
@@ -481,8 +489,8 @@
 				</nav>
 				<div class="footer__column">
 					<h2 class="footer__title">Subscribe now</h2>
-					<form action="#" class="subs-form">
-						<input type="email" name="email" class="subs-form__field" placeholder="Your email">
+					<form action="#" id="registration-form" class="subs-form">
+						<input type="email" name="email" class="subs-form__field" placeholder="Your email" required>
 						<button class="btn__reset btn subs-form__btn">Subscribe now</button>
 					</form>
 				</div>

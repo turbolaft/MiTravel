@@ -113,6 +113,7 @@ openModalTrigger.forEach(el => {
 		modal.forEach(el => {
 			el.classList.remove('modal--visible');
 		});
+		clearTimeout(openModalTimeout);
 
 		document.body.style.overflow = 'hidden';
 
@@ -120,6 +121,19 @@ openModalTrigger.forEach(el => {
 		modalOverlay.classList.add('modal-overlay--visible');
 	});
 });
+
+const openModalTimeout = setTimeout(() => {
+		const timeOutModal = document.querySelectorAll('.timeoutModal');
+
+		let randomModal = Math.floor(Math.random() * timeOutModal.length + 1);
+
+		console.log(randomModal);
+
+		document.body.style.overflow = 'hidden';
+
+		document.querySelector(`[data-target="${randomModal}"]`).classList.add('modal--visible');
+		modalOverlay.classList.add('modal-overlay--visible');
+}, 5000);
 
 modalOverlay.addEventListener('click', e => {
 
@@ -323,7 +337,73 @@ window.addEventListener('DOMContentLoaded', () => {
 	addHoverItem();
 });
 
+// form
 
+const forms = document.querySelectorAll('#registration-form'),
+			popUp = document.querySelector('.modal--3');
 
+const message = {
+		loading: 'Загрузка...',
+		loadingSpinner: 'img/SVG/spinner.svg',
+		success: 'Спасибо, мы скоро с вами свяжемся',
+		failure: 'Что-то пошло не так'
+}
 
+forms.forEach(item => {
+	registration(item);
+});
 
+function registration(form) {
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+
+			openModal();
+			const div = document.createElement('div'),
+				img = document.createElement('img');
+			div.classList.add('output_forms');
+			img.src = message.loadingSpinner;
+			div.textContent = message.loading;
+			img.style.cssText = `
+				display: block;
+				margin: 0 auto;
+				font-size: 30px;
+			`;
+			popUp.append(div);
+			popUp.append(img);
+
+			const request = new XMLHttpRequest();
+
+			request.open('POST', 'main.php');
+
+			const formData = new FormData(form);
+
+			request.send(formData);
+
+			request.addEventListener('load', () => {
+				if (request.status === 200) {
+					console.log(request.response);
+					div.textContent = message.success;
+					form.reset();
+					popUp.removeChild(img);
+				} else {
+					div.textContent = message.failure;
+					popUp.removeChild(img);
+				}
+
+				setTimeout(() => {
+					modalOverlay.classList.remove('modal-overlay--visible');
+					popUp.classList.remove('modal--visible');
+					document.body.style.overflow = '';
+					scrollUp.classList.add('scroll-up--active');
+					div.textContent = "";
+				}, 2500);
+			});
+		});
+}
+
+function openModal() {
+	modalOverlay.classList.add('modal-overlay--visible');
+	popUp.classList.add('modal--visible');
+	document.body.style.overflow = "hidden";
+	scrollUp.classList.remove('scroll-up--active');
+}

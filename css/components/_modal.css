@@ -104,13 +104,13 @@
 }
 
 .modal--visible {
-	display: block;
+	display: block !important;
 }
 
 .modal-overlay--visible {
-	opacity: 1;
-	visibility: visible;
-	transition: all 0.3s ease-in-out;
+	opacity: 1 !important;
+	visibility: visible !important;
+	transition: all 0.3s ease-in-out !important;
 }
 
 .isShowBtn {
@@ -242,3 +242,13 @@
 	height: 30px;
 }
 
+.output_forms {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 30px;
+}
+
+
+.modal--3 {
+	height: 150px;
+}
